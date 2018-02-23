@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 from fbprophet import Prophet
+import matplotlib.pyplot as plt
 
 data_df = pd.read_csv("example_wp_peyton_manning.csv")
 data_df["y"] = np.log(data_df["y"])
@@ -20,3 +21,7 @@ print(pred_res[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail())
 
 # visualization
 m.plot(pred_res)
+
+m.plot_components(pred_res)
+
+plt.show()
